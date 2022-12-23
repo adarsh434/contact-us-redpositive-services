@@ -1,0 +1,69 @@
+import React, {useState} from 'react';
+import {TextInput, View, StyleSheet, Text} from 'react-native';
+
+import {colors} from '../config';
+
+function AppInputText({
+  placeHolderName,
+  handleChange,
+  setFieldTouched,
+  values,
+  field,
+  ...otherProp
+}) {
+  const [focus, setFocus] = useState(false);
+  const [placeHolder, setPlaceHolder] = useState(false);
+
+  return (
+    <View
+      style={{
+        ...styles.container,
+        borderColor: focus ? colors.purple : colors.disabled,
+      }}>
+      <TextInput
+        style={styles.text}
+        onBlur={() => {
+          setFieldTouched(field);
+        }}
+        onFocus={() => {
+          setFocus(true);
+          setPlaceHolder(true);
+        }}
+        onChangeText={handleChange(field)}
+        onEndEditing={() => {
+          setFocus(false);
+          values.length === 0 ? setPlaceHolder(false) : setPlaceHolder(true);
+        }}
+        {...otherProp}
+      />
+      <View style={{...styles.placeHolder, top: placeHolder ? -12 : 16}}>
+        <Text style={{color: focus ? colors.purple : colors.placeHolder}}>
+          {placeHolderName}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderRadius: 12,
+    marginTop: 12,
+    marginEnd: 12,
+  },
+  text: {
+    zIndex: 1,
+    padding: 12,
+    textAlignVertical: 'top',
+    color: colors.black,
+  },
+  placeHolder: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    left: 12,
+  },
+});
+
+export default AppInputText;
