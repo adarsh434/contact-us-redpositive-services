@@ -45,42 +45,42 @@ function ContactForm() {
           }) => (
             <>
               <AppInputText
-                placeHolderName={'Name*'}
+                placeHolderName={'Name *'}
                 field={'name'}
                 values={values.name}
                 keyboardType="default"
                 handleChange={handleChange}
                 setFieldTouched={setFieldTouched}
+                errorName={errors.name}
+                visibility={touched.name}
               />
-              <ErrorMessage error={errors.name} visible={touched.name} />
 
               <AppInputText
-                placeHolderName={'Mobile Number*'}
+                placeHolderName={'Mobile Number *'}
                 field={'mobileNumber'}
                 values={values.mobileNumber}
                 keyboardType="number-pad"
                 maxLength={10}
                 handleChange={handleChange}
                 setFieldTouched={setFieldTouched}
-              />
-              <ErrorMessage
-                error={errors.mobileNumber}
-                visible={touched.mobileNumber}
+                errorName={errors.mobileNumber}
+                visibility={touched.mobileNumber}
               />
 
               <AppInputText
-                placeHolderName={'Email*'}
+                placeHolderName={'Email *'}
                 field={'email'}
                 values={values.email}
                 keyboardType="email-address"
                 autoCapitalize="none"
                 handleChange={handleChange}
                 setFieldTouched={setFieldTouched}
+                errorName={errors.email}
+                visibility={touched.email}
               />
-              <ErrorMessage error={errors.email} visible={touched.email} />
 
               <AppInputText
-                placeHolderName={'Message*'}
+                placeHolderName={'Message *'}
                 field={'message'}
                 values={values.message}
                 keyboardType="default"
@@ -89,8 +89,10 @@ function ContactForm() {
                 multiline={true}
                 handleChange={handleChange}
                 setFieldTouched={setFieldTouched}
+                errorName={errors.message}
+                visibility={touched.message}
+                moreStyles={{textAlignVertical: 'top'}}
               />
-              <ErrorMessage error={errors.message} visible={touched.message} />
 
               <View style={styles.buttonContainer}>
                 <AppButton title={'Submit'} onPress={handleSubmit} />
