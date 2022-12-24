@@ -31,7 +31,7 @@ function ContactForm() {
           initialValues={{name: '', mobileNumber: '', email: '', message: ''}}
           onSubmit={value =>
             Linking.openURL(
-              `mailto:adarsh.hondadakattireebok@gmail.com?subject=Details&body= Name : ${value.name} \n Mobile Number : ${value.mobileNumber} \n Email : ${value.email} \n Message : ${value.message}`,
+              `mailto:info@redpositive.in?subject=Details&body= Name : ${value.name} \n Mobile Number : ${value.mobileNumber} \n Email : ${value.email} \n Message : ${value.message}`,
             )
           }
           validationSchema={validationSchema}>
